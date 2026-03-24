@@ -31,11 +31,9 @@ mongoose
 // Middlewares
 app.use(express.json());
 
-// ✅ AJOUT IMPORTANT (servir les images)
-app.use("/images", express.static(path.join(__dirname, "images")));
-
 // Routes
 app.use("/api/auth", userRoutes);
 app.use("/api/books", bookRoutes);
+app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // ✅ AJOUT
 
 module.exports = app;
