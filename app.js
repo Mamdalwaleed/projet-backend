@@ -1,3 +1,4 @@
+require("dotenv").config(); // J'importe et configure le module 'dotenv' pour charger les variables d'environnement à partir d'un fichier '.env'. Cela me permet de stocker des informations sensibles (comme les URI de connexion à la base de données) en dehors du code source.
 const express = require("express"); //J'importe le framework Express pour créer l'application web.
 const app = express(); //  J'initialise une instance d'Express qui servira de base pour mon application.
 const mongoose = require("mongoose"); //J'importe Mongoose, une bibliothèque qui facilite la connexion et les interactions avec une base de données MongoDB.
@@ -21,8 +22,7 @@ app.use((req, res, next) => {
 });
 
 // 🔥 MongoDB
-const mongoURI =
-  "mongodb+srv://waleed:abcd123@cluster3.4bk297d.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster3";
+const mongoURI = process.env.MONGO_URI;
 
 mongoose
   .connect(mongoURI)
